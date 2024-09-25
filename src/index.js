@@ -19,15 +19,25 @@ app.get('/', (c) => {
 });
 
 app.get('/login', (c) => {
-	return c.render(renderLoginPage());
+	return c.render(renderLoginPage({ wrongCred: false }));
 });
 
-app.post('/login', (c) => {
-	const { email, password } = c.body;
+app.post('/login', async (c) => {
+	const { email, password } = await c.req.parseBody();
+	console.log('email', email);
+	console.log('password', password);
 	// authenticate user
-	const isMatched = email === process.env.USER_EMAIL && password === process.env.USER_PASSWORD;
+	const isMatched = email === c.env.USER_EMAIL && password === c.env.USER_PASSWORD;
 	// if successful, create a session
 	console.log('isMatched', isMatched);
+
+	if (isMatched) {
+		const session = Math.random().toString(36).slice(2);
+		setSignedCookie(c, 'session', session);
+		return c.redirect('/');
+	} else {
+		return c.render(renderLoginPage({ wrongCred: true }));
+	}
 });
 
 export default app;
