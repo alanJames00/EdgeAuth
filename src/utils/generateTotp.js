@@ -6,8 +6,9 @@ export default async function generateTotp({ algorithm, secret, digits, period }
 
 	const time = Math.floor(unixTimestamp / period);
 
-	const timeBuffer = new TextEncoder().encode(String(time));
-	const timeView = new DataView(timeBuffer.buffer);
+	// create an 8byte buffer
+	const timeBuffer = new ArrayBuffer(8);
+	const timeView = new DataView(timeBuffer);
 	timeView.setUint32(4, time, false); // Write the time to the last 4 bytes (big-endian)
 
 	const key = decodeBase32(secret);
