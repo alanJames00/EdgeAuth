@@ -32,7 +32,6 @@ async function encrypt({ data, keyB64 }) {
 
 	// Convert to Base64 for easier storage
 	const base64Combined = btoa(String.fromCharCode(...combined));
-	console.log(base64Combined);
 	return base64Combined;
 }
 
@@ -50,20 +49,6 @@ async function decrypt({ base64Combined, key }) {
 	const decoder = new TextDecoder();
 
 	return decoder.decode(decrypted);
-}
-
-function uint8ArrayToBase64(uint8Array) {
-	const binaryString = String.fromCharCode(...uint8Array);
-	return btoa(binaryString); // Encode binary string as Base64
-}
-
-function base64ToUint8Array(base64) {
-	const binaryString = atob(base64); // Decode Base64 to binary string
-	const uint8Array = new Uint8Array(binaryString.length);
-	for (let i = 0; i < binaryString.length; i++) {
-		uint8Array[i] = binaryString.charCodeAt(i);
-	}
-	return uint8Array;
 }
 
 export { encrypt, decrypt };

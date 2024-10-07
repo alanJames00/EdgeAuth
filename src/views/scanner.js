@@ -19,7 +19,7 @@ export default function renderScannerPage() {
     <main class="flex-grow flex flex-col items-center justify-center px-4 py-8">
         <div class="bg-white rounded-lg shadow-md p-8 w-full max-w-md">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Scan QR Code</h2>
-            <div class="bg-gray-200 aspect-square w-full max-w-xs mx-auto mb-6 flex items-center justify-center" id="reader">
+            <div class="bg-gray-200 aspect-square w-full max-w-xs mx-auto mb-6 flex flex-col items-center justify-center" id="reader">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -191,6 +191,10 @@ export default function renderScannerPage() {
         }
 
 		async function saveToken(keyURIObj) {
+
+			// disable the save token button
+			document.getElementById('save-token-btn').disabled = true;
+
 			const resp = await fetch("/api/token/save", {
 				method: "POST",
 				headers: {
@@ -201,10 +205,14 @@ export default function renderScannerPage() {
 
 			if (resp.ok) {
 				const respJson = await resp.json();
+				// redirect to the homepage
+				window.location.href = "/";
 				return respJson;
 			}
 			else {
 				alert("Failed to save token");
+				// enable the save token button
+				document.getElementById('save-token-btn').disabled = false;
 			}
 		}
 
@@ -250,7 +258,9 @@ export default function renderScannerPage() {
 					<p class="text-sm text-gray-600">Current TOTP:</p>
 					<p class="text-2xl font-bold text-blue-600">\${resp.code}</p>
 				</div>
-				<button class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="saveToken(keyURIObjGlobal)">
+				<button
+				id="save-token-btn"
+					class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-500" onclick="saveToken(keyURIObjGlobal)">
 					Save Token
 				</button>
 			</div>\`;
