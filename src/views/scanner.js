@@ -73,7 +73,6 @@ export default function renderScannerPage() {
 
             try {
                 uriGroups = uri.match(OTPURI_REGEX);
-                console.log(uriGroups)
             } catch (_) {
                 // handled below
             }
@@ -230,7 +229,6 @@ export default function renderScannerPage() {
         // Starts scanner
 
         async function success(result) {
-			console.log(result);
 
 			// clear the scanner instance and remove the scanner element
 			scanner.clear();
