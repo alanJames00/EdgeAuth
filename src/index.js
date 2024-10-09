@@ -6,6 +6,7 @@ import renderLoginPage from './views/login';
 import renderScannerPage from './views/scanner';
 import generateTotp from './utils/generateTotp';
 import { encrypt, decrypt } from './utils/storeKey';
+import renderDbManager from './views/db_manager';
 
 const app = new Hono();
 
@@ -34,6 +35,7 @@ const authWare = createMiddleware(async (c, next) => {
 
 app.use('/', authWare);
 app.use('/scan', authWare);
+app.use('/db_manager', authWare);
 app.use('/api/token/new', authWare);
 app.use('/api/token/save', authWare);
 app.use('/api/db/dump', authWare);
@@ -93,6 +95,10 @@ app.post('/login', async (c) => {
 
 app.get('/scan', async (c) => {
 	return c.render(renderScannerPage());
+});
+
+app.get('/db_manager', async (c) => {
+	return c.render(renderDbManager());
 });
 
 // generate a totp token before storing it
