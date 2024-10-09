@@ -36,6 +36,7 @@ app.use('/', authWare);
 app.use('/scan', authWare);
 app.use('/api/token/new', authWare);
 app.use('/api/token/save', authWare);
+app.use('/api/db/dump', authWare);
 
 app.get('/', async (c) => {
 	// get all the tokens from the database
@@ -144,4 +145,29 @@ app.post('/api/token/save', async (c) => {
 		info: 'Token saved successfully.',
 	});
 });
+
+// creates a dump of current tokens table
+app.get('/api/db/dump', async (c) => {
+	try {
+		// fetch all rows from the table
+		const { results } = await c.env.DB.prepare(`SELECT * FROM Tokens`).all();
+
+		const jsonString = JSON.stringify(results, null, 2);
+
+		const file = new Blob([jsonString], { type: 'application/json' });
+
+		return new Response(file, {
+			headers: {
+				'Content-Type': 'application/json',
+				'Content-Disposition': 'attachment; filename="tokens-dump.json"', // Forces download as a file
+			},
+		});
+	} catch (e) {
+		console.log(e);
+		return c.json({
+			err: e.message,
+		});
+	}
+});
+
 export default app;
