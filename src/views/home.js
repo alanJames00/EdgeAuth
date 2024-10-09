@@ -20,6 +20,8 @@ function renderHomepage({ tokens }) {
         </div>
     </header>
     <main class="container mx-auto px-4 py-8">
+		<h3 class="text-sm underline font-semibold mb-4 text-blue-700"><a href=/db_manager>Manage Database Dumps</a></h3>
+
         <h2 class="text-xl font-semibold mb-4 text-gray-700">Active Tokens</h2>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 		${tokens.map(

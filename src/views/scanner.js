@@ -272,11 +272,13 @@ export default function renderScannerPage() {
         }
 
     </script>
-    <footer class="bg-white border-t py-4">
-        <div class="container mx-auto px-4 text-center text-sm text-gray-600">
-            &copy; 2023 Authenticator. All rights reserved.
-        </div>
-    </footer>
+
+   		<footer class="bg-white border-t py-4">
+    		<div class="container mx-auto px-4 text-center text-sm text-gray-600">
+            EdgeAuth from <a href="https://github.com/alanJames00" class="text-blue-500 hover:underline" target="_blank">alanjames</a>
+        	</div>
+     	</footer>
+
 </body>
 </html>
 	`;
