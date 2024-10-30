@@ -16,19 +16,19 @@
 
 ## Screenshots
 
-![Alt text](https://github.com/alanJames00/EdgeAuth/blob/main/screenshots/login.jpeg)
+![Alt text](https://github.com/alanJames00/EdgeAuth/blob/master/screenshots/login.jpeg)
 
 - Login Page
 
-![Alt text](https://github.com/alanJames00/EdgeAuth/blob/main/screenshots/home_page.jpeg)
+![Alt text](https://github.com/alanJames00/EdgeAuth/blob/master/screenshots/home_page.jpeg)
 
 - Home Page
 
-![Alt text](https://github.com/alanJames00/EdgeAuth/blob/main/screenshots/add_token.jpeg)
+![Alt text](https://github.com/alanJames00/EdgeAuth/blob/master/screenshots/add_token.jpeg)
 
 - Add New Token Page
 
-![Alt text](https://github.com/alanJames00/EdgeAuth/blob/main/screenshots/manage_db.jpeg)
+![Alt text](https://github.com/alanJames00/EdgeAuth/blob/master/screenshots/manage_db.jpeg)
 
 - Database Dump Page
 
