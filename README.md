@@ -14,6 +14,24 @@
 - **Globally Available**: App is available worldwide with low latency. Thanks to Cloudflare's global network.
 - **Compatible with any TOTP-compatible service**: Use it with any service that supports TOTP 2FA.
 
+## Screenshots
+
+![Alt text](https://github.com/alanJames00/EdgeAuth/blob/main/screenshots/login.jpeg)
+
+- Login Page
+
+![Alt text](https://github.com/alanJames00/EdgeAuth/blob/main/screenshots/home_page.jpeg)
+
+- Home Page
+
+![Alt text](https://github.com/alanJames00/EdgeAuth/blob/main/screenshots/add_token.jpeg)
+
+- Add New Token Page
+
+![Alt text](https://github.com/alanJames00/EdgeAuth/blob/main/screenshots/manage_db.jpeg)
+
+- Database Dump Page
+
 ## References:
 
 1. Google Authenticator wiki: https://github.com/google/google-authenticator/wiki/Key-Uri-Format
