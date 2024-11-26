@@ -63,7 +63,7 @@ export default function renderScannerPage() {
 
         const ALGORITHM_REGEX = /^SHA(?:1|224|256|384|512|3-224|3-256|3-384|3-512)$/i;
 
-        const POSITIVE_INTEGER_REGEX = / ^\\+? [1 - 9]\d * $ /;
+        const POSITIVE_INTEGER_REGEX =  /^\\+?[1-9]\\d*$/;
 
 
         // custom keyURI parser
